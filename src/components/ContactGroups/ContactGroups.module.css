@@ -1,0 +1,17 @@
+
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 20px;
+}
+
+.title {
+  margin: 8px;
+}
+
+@media (max-width: 768px) {
+  .root {
+    width: 100%;
+  }
+}

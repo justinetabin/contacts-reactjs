@@ -1,0 +1,10 @@
+body  {
+  background-color: rgb(250, 250, 250);
+}
+
+.root {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
