@@ -1,1 +1,1 @@
-export { default as ContactGroups } from './ContactGroups/ContacGroups';
+export { default as ContactGroups } from './ListContacts/ContactGroups/ContacGroups';
