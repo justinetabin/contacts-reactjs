@@ -53,11 +53,6 @@
   justify-content: flex-end;
 }
 
-.cardHeader {
-  height: 0px;
-  background-color: #bdbdbd;
-}
-
 @media (max-width: 768px) {
   .root {
     width: 100%;
