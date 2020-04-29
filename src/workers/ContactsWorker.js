@@ -12,6 +12,11 @@ export default class ContactsWorker {
     return contacts;
   }
 
+  async getContact(contactId) {
+    const { data } = await this.contactsApi.getContact(contactId);
+    return new Contact(data);
+  }
+
   groupContacts(contacts) {
     const sortedContacts = contacts.sort((a, b) => ((a.firstName > b.firstName) ? 1 : -1));
     var contactGroups = []

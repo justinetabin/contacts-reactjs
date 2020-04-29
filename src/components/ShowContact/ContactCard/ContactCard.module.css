@@ -1,0 +1,65 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 20px;
+}
+
+.backBtn {
+  margin: 0 0 10px 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  background-color: #bdbdbd;
+  height: 150px;
+}
+
+.header .fullname {
+  color: white;
+}
+
+.spacer {
+  margin: 5px;
+}
+
+.contentGrid {
+  display: flex;
+  flex-direction: row;
+}
+
+.contentGrid .col {
+  display: flex;
+  flex-direction: column;
+}
+
+.contentGrid .row {
+  flex: 1;
+}
+
+.contentGrid .row2 {
+  flex: 2;
+}
+
+.placeholder {
+  color: #bdbdbd;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cardHeader {
+  height: 0px;
+  background-color: #bdbdbd;
+}
+
+@media (max-width: 768px) {
+  .root {
+    width: 100%;
+  }
+}

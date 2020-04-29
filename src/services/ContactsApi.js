@@ -9,4 +9,8 @@ export default class ContactsApi {
   async fetchContacts() {
     return await axios.get(this.baseUrl + '/contacts');
   }
+
+  async getContact(contactId) {
+    return await axios.get(this.baseUrl + '/contacts/' + contactId);
+  }
 }

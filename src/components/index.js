@@ -1,1 +1,2 @@
-export { default as ContactGroups } from './ListContacts/ContactGroups/ContacGroups';
+export { default as ListContacts } from './ListContacts/ContactGroups/ContactGroups';
+export { default as ShowContact } from './ShowContact/ContactCard/ContactCard';

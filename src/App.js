@@ -1,32 +1,41 @@
 import React from 'react';
 import styles from './App.module.css';
-import { ContactGroups } from './components';
-import { ContactsApi } from './services'
-import { ContactsWorker } from './workers';
+import { ListContacts, ShowContact } from './components';
+import { DependencyWorker } from './workers';
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route,
+} from 'react-router-dom'
 
 export default class App extends React.Component {
 
-  state = {
-    contactGroups: []
-  }
-
   constructor() {
     super();
-    const contactsApi = new ContactsApi();
-    this.worker = new ContactsWorker(contactsApi);
-  }
-
-  async componentDidMount() {
-    const contacts = await this.worker.fetchContacts();
-    const contactGroups = this.worker.groupContacts(contacts);
-    this.setState({ contactGroups });
+    this.factory = new DependencyWorker();
   }
 
   render() {
-    const { contactGroups } = this.state;
+
+    const router = (
+      <Router>
+        <Switch>
+          <Route
+            exact path="/"
+            render={(props) => (<ListContacts {...props} factory={this.factory} />)}
+          />
+
+          <Route
+            path="/:id"
+            render={(props) => (<ShowContact {...props} factory={this.factory} />)}
+          />
+        </Switch>
+      </Router>
+    );
+
     return (
       <div className={styles.root}>
-        <ContactGroups data={contactGroups} />
+        {router}
       </div>
     )
   }
