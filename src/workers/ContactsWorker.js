@@ -17,6 +17,17 @@ export default class ContactsWorker {
     return new Contact(data);
   }
 
+  async updateContact(contact) {
+    const contactToUpdate = {
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      email: contact.email,
+      phoneNumber: contact.phoneNumber
+    }
+    const { data } = await this.contactsApi.updateContact(contact._id, contactToUpdate);
+    return new Contact(data);
+  }
+
   groupContacts(contacts) {
     const sortedContacts = contacts.sort((a, b) => ((a.firstName > b.firstName) ? 1 : -1));
     var contactGroups = []

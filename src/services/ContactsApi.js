@@ -6,11 +6,15 @@ export default class ContactsApi {
     this.baseUrl = 'https://contacts-service.herokuapp.com';
   }
 
-  async fetchContacts() {
-    return await axios.get(this.baseUrl + '/contacts');
+  fetchContacts() {
+    return axios.get(this.baseUrl + '/contacts');
   }
 
-  async getContact(contactId) {
-    return await axios.get(this.baseUrl + '/contacts/' + contactId);
+  getContact(contactId) {
+    return axios.get(this.baseUrl + '/contacts/' + contactId);
+  }
+
+  updateContact(contactId, contact) {
+    return axios.put(this.baseUrl + '/contacts/' + contactId, contact);
   }
 }

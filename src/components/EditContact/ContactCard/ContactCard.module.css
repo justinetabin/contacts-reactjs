@@ -1,0 +1,53 @@
+.root {
+  display: flex;
+  flex-direction: column;
+  width: 30%;
+  margin: 20px;
+}
+
+.backBtn {
+  margin: 0 0 10px 0;
+}
+
+.header {
+  display: flex;
+  flex-direction: column;
+  height: 100px;
+  justify-content: center;
+  align-items: center;
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.field {
+  flex: 1;
+}
+
+.value {
+  flex: 2;
+}
+
+.placeholder {
+  color: #bdbdbd
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end;
+}
+
+@media (max-width: 768px) {
+  .root {
+    width: 100%;
+  }
+}

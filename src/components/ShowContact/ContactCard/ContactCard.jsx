@@ -12,12 +12,14 @@ import { Link } from 'react-router-dom';
 import ArrowBackRoundedIcon from '@material-ui/icons/ArrowBackRounded';
 import DeleteIcon from '@material-ui/icons/Delete';
 import EditIcon from '@material-ui/icons/Edit';
+import { Redirect } from 'react-router-dom';
 
 export default class ContactCard extends React.Component {
 
   state = {
     contact: null,
-    error: null
+    error: null,
+    redirect: null
   }
   worker = null
   contactId = null
@@ -41,8 +43,21 @@ export default class ContactCard extends React.Component {
     }
   }
 
+  didTapEdit(e) {
+    var state = this.state
+    state.redirect = (
+      <Redirect to={{
+        pathname: `/${this.contactId}/edit`,
+        contact: state.contact
+      }} />
+    )
+    this.setState(state);
+  }
+
   render() {
-    const { contact, error } = this.state;
+    const { contact, error, redirect } = this.state;
+
+    if (redirect) return redirect;
 
     const emptyView = (
       <Typography>Contact not found.</Typography>
@@ -76,7 +91,7 @@ export default class ContactCard extends React.Component {
         </CardContent>
 
         <CardActions className={styles.actions} >
-          <IconButton>
+          <IconButton onClick={this.didTapEdit.bind(this)}>
             <EditIcon />
           </IconButton>
           <IconButton>
