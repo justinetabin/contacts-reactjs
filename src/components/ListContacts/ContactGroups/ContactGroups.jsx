@@ -1,5 +1,5 @@
 import React from 'react';
-import { Typography, Card, CardActions, CardContent, CardActionArea } from '@material-ui/core';
+import { Typography, Card, CardContent, CardActionArea } from '@material-ui/core';
 import styles from './ContactGroups.module.css';
 import ContactCards from '../ContactCards/ContactCards';
 import { Redirect } from 'react-router-dom';
@@ -32,6 +32,12 @@ export default class ContactGroups extends React.Component {
     })
   }
 
+  didSelectAdd() {
+    this.setState({
+      redirect: <Redirect to={'/new'} />
+    })
+  }
+
   render() {
     const { contacts, redirect } = this.state;
 
@@ -41,7 +47,7 @@ export default class ContactGroups extends React.Component {
 
     const addButton = contactGroups.length ? (
       <Card variant="outlined">
-        <CardActionArea>
+        <CardActionArea onClick={this.didSelectAdd.bind(this)}>
           <CardContent className={styles.add}>
             <AddCircleIcon />
           </CardContent>

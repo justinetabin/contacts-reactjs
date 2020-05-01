@@ -1,6 +1,11 @@
 import React from 'react';
 import styles from './App.module.css';
-import { ListContacts, ShowContact, EditContact } from './components';
+import { 
+  ListContacts, 
+  ShowContact, 
+  EditContact, 
+  AddContact 
+} from './components';
 import { DependencyWorker } from './workers';
 import {
   BrowserRouter as Router,
@@ -23,6 +28,11 @@ export default class App extends React.Component {
           <Route
             exact path="/"
             render={(props) => (<ListContacts {...props} factory={this.factory} />)}
+          />
+
+          <Route
+            exact path="/new"
+            render={(props) => (<AddContact {...props} factory={this.factory} />)}
           />
 
           <Route

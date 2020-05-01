@@ -17,4 +17,8 @@ export default class ContactsApi {
   updateContact(contactId, contact) {
     return axios.put(this.baseUrl + '/contacts/' + contactId, contact);
   }
+
+  createContact(contact) {
+    return axios.post(this.baseUrl + '/contacts', contact);
+  }
 }

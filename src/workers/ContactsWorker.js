@@ -28,6 +28,17 @@ export default class ContactsWorker {
     return new Contact(data);
   }
 
+  async createContact(contact) {
+    const contactToCreate = {
+      firstName: contact.firstName,
+      lastName: contact.lastName,
+      email: contact.email,
+      phoneNumber: contact.phoneNumber
+    }
+    const { data } = await this.contactsApi.createContact(contactToCreate);
+    return new Contact(data);
+  }
+
   groupContacts(contacts) {
     const sortedContacts = contacts.sort((a, b) => ((a.firstName > b.firstName) ? 1 : -1));
     var contactGroups = []
