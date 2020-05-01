@@ -1,8 +1,9 @@
 import React from 'react';
-import { Typography } from '@material-ui/core';
+import { Typography, Card, CardActions, CardContent, CardActionArea } from '@material-ui/core';
 import styles from './ContactGroups.module.css';
 import ContactCards from '../ContactCards/ContactCards';
 import { Redirect } from 'react-router-dom';
+import AddCircleIcon from '@material-ui/icons/AddCircle';
 
 export default class ContactGroups extends React.Component {
 
@@ -33,31 +34,44 @@ export default class ContactGroups extends React.Component {
 
   render() {
     const { contacts, redirect } = this.state;
+
+    if (redirect) return redirect;
+
     const contactGroups = this.worker.groupContacts(contacts);
-    
-    const tableView = contactGroups.map(contactGroup => {
+
+    const addButton = contactGroups.length ? (
+      <Card variant="outlined">
+        <CardActionArea>
+          <CardContent className={styles.add}>
+            <AddCircleIcon />
+          </CardContent>
+        </CardActionArea>
+      </Card>
+    ) : null
+
+    const tableView = contactGroups.length ? contactGroups.map(contactGroup => {
       return (
         <div key={contactGroup.title}>
           <div className={styles.header}>
             <Typography>{contactGroup.title}</Typography>
           </div>
           <div className={styles.content}>
-            <ContactCards className={styles.content} contacts={contactGroup.contacts} didSelectContact={this.didSelectContact.bind(this)}/>
+            <ContactCards className={styles.content} contacts={contactGroup.contacts} didSelectContact={this.didSelectContact.bind(this)} />
           </div>
         </div>
       )
-    })
+    }) : null
 
-    const loadingView = (
+    const loadingView = contactGroups.length ? null : (
       <Typography>Loading...</Typography>
     )
 
     return (
-      redirect ? redirect : (
-        <div className={styles.root}>
-          {contactGroups.length ? tableView : loadingView}
-        </div>
-      )
+      <div className={styles.root}>
+        {addButton}
+        {loadingView}
+        {tableView}
+      </div>
     )
   }
 }

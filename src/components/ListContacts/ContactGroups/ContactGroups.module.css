@@ -9,6 +9,11 @@
   padding: 14px 0 0 16px;
 }
 
+.add {
+  display: flex;
+  justify-content: center;
+}
+
 @media (max-width: 768px) {
   .root {
     width: 100%;
