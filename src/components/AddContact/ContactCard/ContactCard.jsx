@@ -43,12 +43,13 @@ export default class ContactCard extends React.Component {
         contactToCreate,
         createMessage: 'Saving...'
       })
-      await this.worker.createContact(contactToCreate)
+      const createdContact = await this.worker.createContact(contactToCreate)
       this.setState({ 
         ...this.state,
         redirect: (
           <Redirect to={{
-            pathname: `/`
+            pathname: `/${createdContact._id}`,
+            contact: createdContact
           }} />
         )
       })
