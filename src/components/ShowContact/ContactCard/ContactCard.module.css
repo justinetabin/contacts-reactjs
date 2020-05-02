@@ -26,22 +26,17 @@
   margin: 5px;
 }
 
-.contentGrid {
-  display: flex;
-  flex-direction: row;
-}
-
-.contentGrid .col {
-  display: flex;
-  flex-direction: column;
-}
-
-.contentGrid .row {
+.field {
   flex: 1;
 }
 
-.contentGrid .row2 {
+.value {
   flex: 2;
+}
+
+.row {
+  display: flex;
+  margin-bottom: 5px;
 }
 
 .placeholder {

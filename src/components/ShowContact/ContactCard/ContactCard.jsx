@@ -99,14 +99,23 @@ export default class ContactCard extends React.Component {
           </Typography>
         </CardContent>
 
-        <CardContent className={styles.contentGrid}>
-          <div className={`${styles.col} ${styles.row}`}>
-            <Typography className={styles.placeholder}>email</Typography>
-            <Typography className={styles.placeholder}>mobile</Typography>
+        <CardContent>
+          <div className={styles.row}>
+            <div className={styles.field}>
+              <Typography className={styles.placeholder}>email</Typography>
+            </div>
+            <div className={styles.value}>
+              <Typography>{contact.email}</Typography>
+            </div>
           </div>
-          <div className={`${styles.col} ${styles.row2}`}>
-            <Typography>{contact.email}</Typography>
-            <Typography>{contact.phoneNumber}</Typography>
+
+          <div className={styles.row}>
+            <div className={styles.field}>
+              <Typography className={styles.placeholder}>mobile</Typography>
+            </div>
+            <div className={styles.value}>
+              <Typography>{contact.phoneNumber}</Typography>
+            </div>
           </div>
         </CardContent>
 
