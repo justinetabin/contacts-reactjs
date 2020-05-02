@@ -18,8 +18,13 @@ export default class ContactGroups extends React.Component {
   }
 
   async componentDidMount() {
-    const contacts = await this.worker.fetchContacts();
-    this.setState({ contacts });
+    try {
+      const contacts = await this.worker.fetchContacts();
+      this.setState({ contacts });
+    } catch (error) {
+      this.setState({ error });
+    }
+    
   }
 
   didSelectContact(contact) {
@@ -39,11 +44,17 @@ export default class ContactGroups extends React.Component {
   }
 
   render() {
-    const { contacts, redirect } = this.state;
+    const { contacts, redirect, error } = this.state;
 
     if (redirect) return redirect;
 
     const contactGroups = this.worker.groupContacts(contacts);
+
+    const errorView = error ? (
+      <Typography>
+        Something went wrong...
+      </Typography>
+    ) : null
 
     const addButton = contactGroups.length ? (
       <Card variant="outlined">
@@ -68,13 +79,14 @@ export default class ContactGroups extends React.Component {
       )
     }) : null
 
-    const loadingView = contactGroups.length ? null : (
+    const loadingView = (contactGroups.length || error) ? null : (
       <Typography>Loading...</Typography>
     )
 
     return (
       <div className={styles.root}>
         {addButton}
+        {errorView}
         {loadingView}
         {tableView}
       </div>
