@@ -39,6 +39,11 @@ export default class ContactsWorker {
     return new Contact(data);
   }
 
+  async deleteContact(contactId) {
+    const { data } = await this.contactsApi.deleteContact(contactId);
+    return new Contact(data);
+  }
+
   groupContacts(contacts) {
     const sortedContacts = contacts.sort((a, b) => ((a.firstName > b.firstName) ? 1 : -1));
     var contactGroups = []

@@ -54,16 +54,36 @@ export default class ContactCard extends React.Component {
     this.setState(state);
   }
 
+  async didTapDelete(e) {
+    var state = this.state
+    try {
+      this.setState({ deleteMessage: 'Deleting...', contactToDelete: this.contactId });
+      await this.worker.deleteContact(this.contactId);
+      state.redirect = (
+        <Redirect to={{
+          pathname: `/`
+        }} />
+      )
+      this.setState(state);
+    } catch (error) {
+      this.setState({ deleteMessage: 'Failed to delete.', contactToDelete: null });
+    }
+  }
+
   render() {
-    const { contact, error, redirect } = this.state;
+    const { contact, error, redirect, deleteMessage, contactToDelete } = this.state;
 
     if (redirect) return redirect;
 
-    const emptyView = (
+    const emptyView = (contact && error) ? (
       <Typography>Contact not found.</Typography>
-    )
+    ) : null
 
-    const loadingView = (
+    const errorView = error ? (
+      <Typography>Something went wrong...</Typography>
+    ) : null
+
+    const loadingView = (contact || error) ? null : (
       <Typography>Loading...</Typography>
     )
 
@@ -91,10 +111,13 @@ export default class ContactCard extends React.Component {
         </CardContent>
 
         <CardActions className={styles.actions} >
-          <IconButton onClick={this.didTapEdit.bind(this)}>
+          <Typography>
+            {deleteMessage}
+          </Typography>
+          <IconButton onClick={this.didTapEdit.bind(this)} disabled={contactToDelete ? true : false}>
             <EditIcon />
           </IconButton>
-          <IconButton>
+          <IconButton onClick={this.didTapDelete.bind(this)} disabled={contactToDelete ? true : false}>
             <DeleteIcon />
           </IconButton>
         </CardActions>
@@ -113,9 +136,10 @@ export default class ContactCard extends React.Component {
     return (
       <div className={styles.root}>
         {backButton}
-        {contact ? cardView : (
-          error ? emptyView : loadingView
-        )}
+        {errorView}
+        {loadingView}
+        {emptyView}
+        {cardView}
       </div>
     )
   }

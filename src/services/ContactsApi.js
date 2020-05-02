@@ -21,4 +21,8 @@ export default class ContactsApi {
   createContact(contact) {
     return axios.post(this.baseUrl + '/contacts', contact);
   }
+
+  deleteContact(contactId) {
+    return axios.delete(this.baseUrl + '/contacts/' + contactId);
+  }
 }
