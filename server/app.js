@@ -11,7 +11,7 @@ const init = async () => {
     host: config.HOST,
     routes: {
       files: {
-        relativeTo: Path.join(__dirname, 'build')
+        relativeTo: Path.join(__dirname, '../build')
       }
     }
   });
