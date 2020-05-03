@@ -120,7 +120,7 @@ export default class ContactCard extends React.Component {
         </CardContent>
 
         <CardActions className={styles.actions} >
-          <Typography>
+          <Typography className={styles.placeholder}>
             {deleteMessage}
           </Typography>
           <IconButton onClick={this.didTapEdit.bind(this)} disabled={contactToDelete ? true : false}>
