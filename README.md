@@ -1,5 +1,5 @@
 # Contacts Web
-[![Heroku](https://heroku-badge.herokuapp.com/?app=contacts-web&svg=1)](https://contacts-web.herokuapp.com)
+[![Heroku](https://heroku-badge.herokuapp.com/?app=contacts-web&root=manifest.json&svg=1)](https://contacts-web.herokuapp.com)
 
 A basic CRUD web app powerd by ReactJS and Material UI.
 
