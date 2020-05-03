@@ -2,12 +2,13 @@
 
 const Hapi = require('@hapi/hapi');
 const Path = require('path');
+const config = require('./config');
 
 const init = async () => {
 
   const server = Hapi.server({
-    port: process.env.PORT || 3000,
-    host: process.env.HOST || '0.0.0.0',
+    port: config.PORT,
+    host: config.HOST,
     routes: {
       files: {
         relativeTo: Path.join(__dirname, 'build')

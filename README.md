@@ -1,3 +1,12 @@
+# Contacts Web
+[![Heroku](https://heroku-badge.herokuapp.com/?app=contacts-web&svg=1)](https://contacts-web.herokuapp.com)
+
+A basic CRUD web app powerd by ReactJS and Material UI.
+
+Check it out! (https://contacts-web.herokuapp.com)
+
+<hr />
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
